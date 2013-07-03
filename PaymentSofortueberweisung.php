@@ -67,7 +67,7 @@ class PaymentSofortueberweisung extends IsotopePayment
 	 * @param array $arrRow
 	 * @return void
 	 */
-	public function processPostSale($arrRow)
+	public function processPostSale()
 	{
 
 		$this->import('Database');
@@ -126,7 +126,7 @@ class PaymentSofortueberweisung extends IsotopePayment
 			'user_variable_4' => $this->Input->post('user_variable_4'),
 			'user_variable_5' => $this->Input->post('user_variable_5'),
 			'created' => $this->Input->post('created'),
-			'notification_password' => '',
+			'notification_password' => $this->sofortueberweisung_notification_password,
 		);
 
 
@@ -171,25 +171,30 @@ class PaymentSofortueberweisung extends IsotopePayment
 		$strCountry = in_array($this->Isotope->Cart->billing_address['country'], array('de','ch','at')) ? $this->Isotope->Cart->billing_address['country'] : 'de';
 		$strUrl = 'https://www.sofortueberweisung.'.$strCountry.'/payment/start';
 
+		$arrRequest = explode("/",$this->Environment->request);
+		$arrRequest[count($arrRequest)-1] = 'complete.html';
+		$arrRequest = implode("/",$arrRequest);
+		$strReturnPath = $this->Environment->host.'/'.$arrRequest;
+
 		$arrParam = array
 		(
-			'user_id'				=> $this->sofortueberweisung_user_id,
-			'project_id'			=> $this->sofortueberweisung_project_id,
-			'sender_holder'			=> '',
+			'user_id'										=> $this->sofortueberweisung_user_id,
+			'project_id'								=> $this->sofortueberweisung_project_id,
+			'sender_holder'						=> '',
 			'sender_account_number'	=> '',
-			'sender_bank_code'		=> '',
-			'sender_country_id'		=> $this->Isotope->Cart->billing_address['country'],
-			'amount'				=> number_format($this->Isotope->Cart->grandTotal, 2, '.', ''),
-			'currency_id'			=> $this->Isotope->Config->currency,
-			'reason_1'				=> $this->Environment->host,
-			'reason_2'				=> '',
-			'user_variable_0'		=> $objOrder->id,
-			'user_variable_1'		=> $this->id,
-			'user_variable_2'		=> $objOrder->uniqid,
-			'user_variable_3'		=> '',
-			'user_variable_4'		=> '',
-			'user_variable_5'		=> '',
-			'project_password'		=> $this->sofortueberweisung_project_password,
+			'sender_bank_code'				=> '',
+			'sender_country_id'				=> $this->Isotope->Cart->billing_address['country'],
+			'amount'										=> number_format($this->Isotope->Cart->grandTotal, 2, '.', ''),
+			'currency_id'								=> $this->Isotope->Config->currency,
+			'reason_1'									=> $this->Environment->host,
+			'reason_2'									=> '',
+			'user_variable_0'						=> $objOrder->id,
+			'user_variable_1'						=> $this->id,
+			'user_variable_2'						=> $objOrder->uniqid,
+			'user_variable_3'						=> '',
+			'user_variable_4'						=> $this->Environment->host,
+			'user_variable_5'						=> $strReturnPath,
+			'project_password'				=> $this->sofortueberweisung_project_password,
 		);
 
 		$arrParam['hash'] = sha1(implode('|', $arrParam));

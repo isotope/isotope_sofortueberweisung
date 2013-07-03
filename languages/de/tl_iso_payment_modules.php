@@ -31,7 +31,8 @@
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_iso_payment_modules']['sofortueberweisung_user_id']		= array('Kundennummer', 'Ihre Kundennummer bei sofortüberweisung.de');
-$GLOBALS['TL_LANG']['tl_iso_payment_modules']['sofortueberweisung_project_id']	= array('Projektnummer', 'Ihre Projektnummer bei sofortüberweisung.de');
-$GLOBALS['TL_LANG']['tl_iso_payment_modules']['sofortueberweisung_project_password']	= array('Projekt-Password', 'Ihr Projekt-Passwort bei sofortüberweisung.de');
+$GLOBALS['TL_LANG']['tl_iso_payment_modules']['sofortueberweisung_user_id']									= array('Kundennummer', 'Ihre Kundennummer bei sofortüberweisung.de');
+$GLOBALS['TL_LANG']['tl_iso_payment_modules']['sofortueberweisung_project_id']							= array('Projektnummer', 'Ihre Projektnummer bei sofortüberweisung.de');
+$GLOBALS['TL_LANG']['tl_iso_payment_modules']['sofortueberweisung_project_password']			= array('Projekt-Password', 'Ihr Projekt-Passwort bei sofortüberweisung.de (für jedes Projekt unterschiedlich)');
+$GLOBALS['TL_LANG']['tl_iso_payment_modules']['sofortueberweisung_notification_password']	= array('Benachrichtigungspasswort', 'Ihr Benachrichtigungspasswort-Passwort bei sofortüberweisung.de (für jedes Projekt unterschiedlich)');
 
