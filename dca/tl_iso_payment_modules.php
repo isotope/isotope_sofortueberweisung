@@ -31,7 +31,7 @@
 /**
  * Palettes
  */
-$GLOBALS['TL_DCA']['tl_iso_payment_modules']['palettes']['sofortueberweisung'] = '{type_legend},name,label,type;{note_legend:hide},note;{config_legend:hide},new_order_status,minimum_total,maximum_total,countries,shipping_modules,product_types;{gateway_legend},trans_type,sofortueberweisung_user_id,sofortueberweisung_project_id,sofortueberweisung_project_password;{price_legend:hide},price,tax_class;{expert_legend:hide},guests,protected;{enabled_legend},enabled';
+$GLOBALS['TL_DCA']['tl_iso_payment_modules']['palettes']['sofortueberweisung'] = '{type_legend},name,label,type;{note_legend:hide},note;{config_legend:hide},new_order_status,minimum_total,maximum_total,countries,shipping_modules,product_types;{gateway_legend},trans_type,sofortueberweisung_user_id,sofortueberweisung_project_id,sofortueberweisung_project_password,sofortueberweisung_notification_password;{price_legend:hide},price,tax_class;{expert_legend:hide},guests,protected;{enabled_legend},enabled';
 
 
 /**
@@ -56,5 +56,12 @@ $GLOBALS['TL_DCA']['tl_iso_payment_modules']['fields']['sofortueberweisung_proje
 	'label'				=> &$GLOBALS['TL_LANG']['tl_iso_payment_modules']['sofortueberweisung_project_password'],
 	'inputType'			=> 'text',
 	'eval'				=> array('mandatory'=>true, 'maxlength'=>255, 'hideInput'=>true, 'tl_class'=>'w50'),
+);
+
+$GLOBALS['TL_DCA']['tl_iso_payment_modules']['fields']['sofortueberweisung_notification_password'] = array
+(
+	'label'				=> &$GLOBALS['TL_LANG']['tl_iso_payment_modules']['sofortueberweisung_notification_password'],
+	'inputType'			=> 'text',
+	'eval'				=> array('maxlength'=>255, 'hideInput'=>true, 'tl_class'=>'w50'),
 );
 
